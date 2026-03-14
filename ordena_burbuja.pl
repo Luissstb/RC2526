@@ -27,8 +27,35 @@ ordena_burbuja(Lista,Lista) :- ordenada(Lista).
 %caso en el que los pares no estan ordenados
 ordena_burbuja(Lista, R) :- append(L1,[Elem1,Elem2|L2], Lista), Elem1>Elem2, append(L1,[Elem2,Elem1|L2],ListaR), ordena_burbuja(ListaR,R).
 
-%caso en el que los pares si estan ordenados
+
+
+
+/* 
+ESTA TERCERA REGLA ES INNECESARIA:
+
+caso en el que los pares si estan ordenados
 ordena_burbuja(Lista, R) :- append(_,[Elem1,Elem2|_], Lista), Elem1=<Elem2, ordena_burbuja(Lista,R).
+
+No descomentar esta regla. Aunque parece lógica (avanzar si el par 
+ya está ordenado), en Prolog rompe el programa al pedir más 
+soluciones (pulsando ';') o al comprobar resultados falsos.
+
+¿Por qué? 
+Si el append encuentra un par ordenado (Elem1 =< Elem2), esta regla 
+vuelve a llamar a 'ordena_burbuja' pasándole EXACTAMENTE LA MISMA 
+'Lista' original, sin haberle cambiado nada.
+
+Como la lista es la misma, Prolog volverá a encontrar ese mismo par 
+ordenado, volverá a ejecutar esta regla, y se quedará atrapado en 
+un bucle infinito comprobando los mismos dos números para siempre.
+
+Solución: Prolog ya ignora los pares ordenados automáticamente en la 
+regla anterior al exigir que (Elem1 > Elem2). Si eso falla, el 
+'append' simplemente sigue buscando otro corte.
+
+*/
+
+
 
 
 
