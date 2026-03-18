@@ -1,6 +1,7 @@
 
 /*
 
+Ordenar por insercion ordena una lista dada insertando en orden en otra lista que devuelve como resultado (No hay que darle un elemento a introducir aparte de la lista).
 insertar_en_list_ord(+Lista,+E,-ListaE). ListaE unifica con una lista igual que Lista pero ordenada y con el elemento E en la posicion correcta.
 
 ordenar_insercion(+Lista,-ListaR).
