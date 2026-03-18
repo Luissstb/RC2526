@@ -1,25 +1,27 @@
 
 /*
-ordenar_insercion(+Lista,+E,-ListaE). ListaE unifica con una lista igual que Lista pero ordenada y con el elemento E en la posicion correcta.
+
+insertar_en_list_ord(+Lista,+E,-ListaE). ListaE unifica con una lista igual que Lista pero ordenada y con el elemento E en la posicion correcta.
+
+ordenar_insercion(+Lista,-ListaR).
 
 [1,9,2,3]  7  --> [1,2,3,7,9]
 
 */
 
 
-ordenar_insercion(Lista, E, ListaE) :- ordenar_lista(Lista, ListaOrdenada), insertar_en_orden(ListaOrdenada, E, ListaE).
 
 
 %----------------------------------------------------------------------------------------------
 
-ordenar_lista([], []).
+ordenar_insercion([], []).
 
-ordenar_lista([Cab|Resto], R) :- ordenar_lista(Resto, R1), insertar_en_orden(R1, Cab, R).
+ordenar_insercion([Cab|Resto], R) :- ordenar_insercion(Resto, R1), insertar_en_list_ord(R1, Cab, R).
 
 %----------------------------------------------------------------------------------------------
 
-insertar_en_orden([], E, [E]).
+insertar_en_list_ord([], E, [E]).
 
-insertar_en_orden([Cab|Resto], E, [E, Cab|Resto]) :- E =< Cab.
+insertar_en_list_ord([Cab|Resto], E, [E, Cab|Resto]) :- E =< Cab.
     
-insertar_en_orden([Cab|Resto], E, [Cab|R]) :- E > Cab, insertar_en_orden(Resto, E, R).
+insertar_en_list_ord([Cab|Resto], E, [Cab|R]) :- E > Cab, insertar_en_list_ord(Resto, E, R).
