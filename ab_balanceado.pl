@@ -14,5 +14,5 @@ altura(a(_,Hi,Hd), ) :- altura(Hi,Ai), altura(Hd,Ad), A is max(Ai,Ad), Altura is
 
 balanceado(nil).
 
-balanceado(a(_,Hi,Hd), ) :- altura(Hi,Ai), altura(Hd,Ad), Dif is Ai - Ad, Abs is abs(Dif), Abs =<1, balanceado(Hi),balanceado(Hd).
+balanceado( a(_,Hi,Hd) ) :- altura(Hi,Ai), altura(Hd,Ad), Dif is Ai - Ad, Abs is abs(Dif), Abs =<1, balanceado(Hi),balanceado(Hd).
 
